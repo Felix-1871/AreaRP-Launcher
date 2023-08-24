@@ -1,80 +1,74 @@
 <p align="center"><img src="../src/assets/images/icon.png" alt="icon-launcher"></p>
 
-<h1 align="center">CraftLaunch</h1>
+<h1 align="center">Area Launcher</h1>
 
 [<p align="center">]()
-![GitHub all releases](https://img.shields.io/github/downloads/luuxis/Selvania-Launcher/total?style=for-the-badge)
-![Discord](https://img.shields.io/discord/819729377650278420?style=for-the-badge)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/luuxis/Selvania-Launcher?style=for-the-badge)
-[<p align="center">]()
-![GitHub forks](https://img.shields.io/github/forks/luuxis/Selvania-Launcher?style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/luuxis/Selvania-Launcher?style=for-the-badge)
+![Discord](https://img.shields.io/discord/757619374084325496?style=for-the-badge)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/Felix-1871/AreaRP-Launcher?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/Felix-1871/AreaRP-Launcher?style=for-the-badge)
 
-<p align="center">
-    <a href="http://discord.luuxis.fr">
+<!-- TODO Get link <p align="center">
+    <a href="http://discord.gg/">
         <img src="https://invidget.switchblade.xyz/e9q7Yr2cuQ">
     </a>
-</p>
-
----
-### **<ins><p align="center">Conditions d'utilisation:</p>**
-- Pour utiliser le code vous devez faire un fork du projet.
-- Pour utiliser le code votre code doit tout le temps être public.
-- Pour utiliser le code toute mention originale de la licence doit être gardé.
-- Pour utiliser le code vous devez garder la licence originale.
----
-
-### **<ins><p align="center">Fonctionnalitées du launcher :</p>**
-
-- ✅ Mise à jour automatiques via github.
-
-- 🔴 Option pour mettre le launcher en maintenance.
-
-- 🔒 Authentification Microsoft.
-
-- ⛏️ Supporte toutes versions de Minecraft 1.0 > latest.
-
-- 📦 Supporte les version moddées Forge, NeoForge, LegacyFabric, FabricMC et Quilt
-
-- 📰 Fil d'actualité intégré nativement au launcher.
-
-- ⚙️ Gestion intuitive des paramètres, y compris un panneau de configuration Java.
-
-- 🟢 Statut serveur complet.
-
-    - Opérationnel ou hors ligne.
-    
-    - Nombres de joueurs connectés.
-
-- ☕ Installation de Java automatique.
-
-    - Si vous avez installé une version incompatible de Java, nous installerons la bonne pour vous.
-    
-    - Vous n'avez pas besoin d'avoir Java installé pour exécuter le launcher.
-
-Ce n'est pas une liste exhaustive. Installez le launcher pour voir tout ce qu'il peut faire !
-
-Vous aimez le projet ? Laissez une étoile ⭐ sur le repo !
+</p> -->
 
 ---
 
-### **<ins><p align="center">Téléchargement :</p>**
+## **<ins><p align="center">Warunki korzystania z kodu:</p>**
 
-Vous pouvez télécharger le launcher à partir des [Releases GitHub](../../../releases).
+- Aby korzystać z kodu, musisz zforkować projekt.
+- Aby korzystać z kodu, kod musi być zawsze publiczny.
+- Aby korzystać z kodu, należy zachować wszelkie oryginalne wzmianki o licencji.
+- Aby korzystać z kodu, należy zachować oryginalną licencję.
 
-Plateformes supportées :
+## **<ins><p align="center">Funkcjonalność :</p>**
 
-- Windows 
+- ✅ Automatyczne aktualizacje za pośrednictwem githuba.
+
+- 🔒 Możlwość grania zarówno z jak i bez premium
+
+- 📦 Szybka, bezproblemowa instalacja modpacku AreaRP.
+
+- 📰 Najnowsze wiadomości z serwera na wyciągnięcie ręki.
+
+- ⚙️ Bezproblemowe zarządzanie ustawieniami.
+
+- 🟢 Natychmiastowa wiedza o stanie serwera.
+
+  - Nie musisz włączać Minecrafta by wiedzieć czy serwer jest offline.
+
+  - Od razu widać ile jest osób na serwerze.
+
+- ☕  Automatyczna instalacja Javy.
+
+  - Jeśli posiadiasz niekompatybilną wersję, zainstalujemy poprawną za ciebie.
+
+  - Do uruchomienia launchera nie potrzebujesz mieć zainstalowanej Javy.
+
+To nie wszystko, jeśli chcesz poznać wszystkie funkcje AreaLaunchera zainstaluj już teraz!
+
+Podoba Ci się nasz projekt? Możesz wesprzeć nasz projekt, klikając gwiazdkę w prawym górnym rogu.
+
+---
+
+### **<p align="center">Pobieranie :**
+
+Możesz pobrać launcher z [GitHub Releases](../../../releases).
+
+Wsparcie dla systemów :
+
+- Windows
 - Linux
 - MacOS
 
-Si vous téléchargez à partir des Releases, sélectionnez le programme d'installation de votre système.
+Jeśli pobierasz z GitHuba, pobierz plik z rozszerzeniem `.exe` dla Windowsa, `.dmg` dla macOS lub `.AppImage` dla Linuxa.
 
- Plateforme | Fichier |
+ Platforma | Plik |
 | -------- | ---- |
-| Windows x64 | `Selvania-Launcher-win-x64.exe ` |
-| macOS x64 | `Selvania-Launcher-mac-x64.dmg` |
-| macOS arm64 | `Selvania-Launcher-mac-arm64.dmg` |
-| Linux x64 | `Selvania-Launcher-linux-x86_64.AppImage` |
+| Windows x64 | `AreaRP-Launcher-win-x64.exe` |
+| macOS x64 | `AreaRP-Launcher-mac-x64.dmg` |
+| macOS arm64 | `AreaRP-Launcher-mac-arm64.dmg` |
+| Linux x64 | `AreaRP-Launcher-linux-x86_64.AppImage` |
 
 ---
