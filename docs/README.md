@@ -6,6 +6,8 @@
 ![Discord](https://img.shields.io/discord/757619374084325496?style=for-the-badge)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/Felix-1871/AreaRP-Launcher?style=for-the-badge)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Felix-1871/AreaRP-Launcher?style=for-the-badge)
+[<p align="center">]()
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q7OKE1R)
 
 <!-- TODO Get link <p align="center">
     <a href="http://discord.gg/">
