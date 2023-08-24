@@ -1,6 +1,6 @@
 {
     "name": "AreaRP-Launcher",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "description": "Launcher for AreaRP",
     "main": "src/app.js",
     "author": "Felix-1871",
