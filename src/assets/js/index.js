@@ -25,7 +25,7 @@ class Splash {
         let splashes = [
             { message: "Allexa - Bogini Wojen i Śmierci", author: "Arrchez" },
             { message: "Allexa to Bogini", author: "Wisnia" },
-            { message: "Znowu wymysły zachodniej burżuazji", author: "Rof" },
+            { message: "Znowu wymysły zachodniej burżuazji", author: "Rof2000" },
             {
                 message: "Linux jest super, tak długo jak działa",
                 author: "Felix",
@@ -56,24 +56,24 @@ class Splash {
                 author: "Harvey",
             },
             {
-                message: "Piękne czasy jak po AreaRP4 [Harvey] dostał bana",
+                message: "Piękne czasy jak po AreaRP 4 Harvey dostał bana",
                 author: "Wiśnia",
             },
             {
-                message: "Nie wiem skąd ONZ by miało mieć silk touch i mending",
+                message: "Nie wiem skąd ONZ by miało mieć mending",
                 author: "Wiśnia",
             },
             {
                 message:
-                    "Głównym obowiązkiem ONZ jest strzec pokoju na serwerze [...]",
+                    "Obowiązkiem ONZ jest strzec pokoju na serwerze",
                 author: "Wiśnia",
             },
             { message: "Dziękuję towarzyszu wisienko", author: "Tyberiusz" },
             {
-                message: "Zigowski chleb z węglem uratował  ludność w ZSRR",
+                message: "Zigowski chleb z węglem uratował ludność w ZSRR",
                 author: "Bartin",
             },
-            { message: "Czy to jest w ogóle legalne", author: "Akira" },
+            { message: "Czy to jest w ogóle legalne?", author: "Akira" },
             {
                 message: "Chcesz odzewu masz mój by ci nie było przykro",
                 author: "Szczypikrul",
