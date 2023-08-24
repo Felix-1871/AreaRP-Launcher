@@ -1,14 +1,14 @@
 <div class="settings-content">
     <div class="tabs-settings-btn">
-        <button class="tab-btn-css tab-btn active-tab-btn default-tab-btn">Comptes</button>
+        <button class="tab-btn-css tab-btn active-tab-btn default-tab-btn">Konta</button>
         <button class="tab-btn-css tab-btn">Java</button>
         <button class="tab-btn-css tab-btn">Launcher</button>
-        <button class="tab-btn-css save-tabs-btn">Sauvegarder</button>
+        <button class="tab-btn-css save-tabs-btn">Zapisz</button>
     </div>
 
     <div class="tabs-settings-content active-tab-content">
         <div class="center-align">
-            <button class="add-account">Ajouter un compte</button>
+            <button class="add-account">Dodaj konto</button>
             <div class="accounts"></div>
         </div>
     </div>
@@ -18,20 +18,18 @@
             <div class="title-settings">Paramètre de votre RAM.</div>
             <div class="java-settings">
                 <div class="information">
-                    Définition de la RAM alloué à votre jeu, une quantité plus important augmenteras les performances de votre jeu.<br> A noter qu'il faut éviter de mettre une trop grande quantité sinon cela peut provoquer des pertes de performances survos
-                    autres applications.
+                    Pamięć RAM przydzielona do gry, większa ilość zwiększy wydajność gry.<br> Należy pamiętać, że należy unikać ustawiania zbyt dużej ilości, w przeciwnym razie może to spowodować spadek wydajności innych aplikacji.
                     <br><br>
-                    <b>- RAM Maximale :</b> Indique la quantité totale de RAM allouée à votre jeu. Il est recommandé de ne pas dépasser 50% de la quantité totale de RAM présente sur votre PC afin qu'il puisse fonctionner correctement. Si votre ordinateur
-                    a plus de 8Go de RAM, nous vous recommandons d'allouer 3Go. Si votre ordinateur a 4Go ou moins, n'allouez pas plus de 2Go.<br><br>
-                    <b>- RAM Minimale :</b> Indique la quantité minimale de RAM allouée au démarrage de votre jeu. Il est recommandé de ne pas mettre plus de 3Go pour cette valeur. La valeur typique est de 1Go.
+                    <b>- Górny limit pamięci :</b> Oznacza całkowitą ilość pamięci RAM przydzielonej grze. Zaleca się, aby nie przekraczać 50% całkowitej ilości pamięci RAM na komputerze, aby gra działała poprawnie. Jeśli komputer posiada więcej niż 8 GB pamięci RAM, zalecamy przydzielenie 4 GB. Jeśli komputer ma 4 GB lub mniej, należy przydzielić nie więcej niż 2 GB. Należy pamiętać jednak, że tak niski poziom może spowodować problemy z wydajnością paczki<br><br>
+                    <b>- Dolny limit pamięci :</b> Wskazuje minimalną ilość pamięci RAM przydzieloną podczas uruchamiania gry. Zaleca się ustawienie tej wartości na nie więcej niż 3 GB. Typowa wartość to 1 GB.
                 </div>
                 <div class="ram-info">
                     <div class="memory-slider" min="0.5" max="8" step="0.5">
                         <div class="slider-touch-left">
-                            <span value="0 Go"></span>
+                            <span value="0 GB"></span>
                         </div>
                         <div class="slider-touch-right">
-                            <span value="0 Go"></span>
+                            <span value="0 GB"></span>
                         </div>
                         <div class="slider-line">
                             <span></span>
@@ -39,8 +37,8 @@
                     </div>
 
                     <div class="ram-info-block">
-                        <b>Vous possédez un total de <span id="total-ram">0 Go</span> RAM.</b><br>
-                        <b>Vous possédez un total de <span id="free-ram">0 Go</span> RAM disponible.</b>
+                        <b>Całkowicie posiadasz <span id="total-ram">0 GB</span> RAM.</b><br>
+                        <b>Obecnie posiadasz <span id="free-ram">0 GB</span> wolnej pamięci RAM.</b>
                     </div>
                 </div>
             </div>
@@ -49,12 +47,12 @@
 
     <div class="tabs-settings-content">
         <div class="center-page">
-            <div class="title-settings">Paramètre après le lancement du jeu.</div>
+            <div class="title-settings">Ustawienia po uruchomieniu gry</div>
             <div class="java-settings">
                 <div class="information">
-                    <input type="checkbox" class="checkbox-settings" id="launcher-close"><label for="launcher-close"><div class="checkround"></div></label> Fermer le launcher après le lancement du jeu.</br>
-                    <input type="checkbox" class="checkbox-settings" id="launcher-close-all"><label for="launcher-close-all"><div class="checkround"></div></label> Fermer le jeu si le launcher est fermé.</br>
-                    <input type="checkbox" class="checkbox-settings" id="launcher-open"><label for="launcher-open"><div class="checkround"></div></label> Garder le launcher ouvert après le lancement du jeu.
+                    <input type="checkbox" class="checkbox-settings" id="launcher-close"><label for="launcher-close"><div class="checkround"></div></label> Zamknij launcher po uruchomieniu gry.</br>
+                    <input type="checkbox" class="checkbox-settings" id="launcher-close-all"><label for="launcher-close-all"><div class="checkround"></div></label> Zamknij launcher po zamknięciu gry.</br>
+                    <input type="checkbox" class="checkbox-settings" id="launcher-open"><label for="launcher-open"><div class="checkround"></div></label> Pozostaw launcher włączony po uruchomieniu gry.
                 </div>
             </div>
         </div>

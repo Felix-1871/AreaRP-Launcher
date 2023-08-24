@@ -88,7 +88,7 @@ class Settings {
 
     async initJavaPath() {
         let javaDatabase = (await this.database.get('1234', 'java-path'))?.value?.path;
-        let javaPath = javaDatabase ? javaDatabase : 'Utiliser la version de java livre avec le launcher';
+        let javaPath = javaDatabase ? javaDatabase : 'Użyj wersji javy dostarczonej z launcherem';
         document.querySelector(".info-path").textContent = `${dataDirectory.replace(/\\/g, "/")}/${process.platform == 'darwin' ? this.config.dataDirectory : `.${this.config.dataDirectory}`}/runtime`;
 
         let path = document.querySelector(".path");
@@ -108,12 +108,12 @@ class Settings {
             if (file.value.replace(".exe", '').endsWith("java") || file.value.replace(".exe", '').endsWith("javaw")) {
                 this.database.update({ uuid: "1234", path: file.value }, 'java-path');
                 path.value = file.value.replace(/\\/g, "/");
-            } else alert("Le nom du fichier doit être java ou javaw");
+            } else alert("Nazwa pliku musi brzmieć java lub javaw");
 
         });
 
         document.querySelector(".path-button-reset").addEventListener("click", () => {
-            path.value = 'Utiliser la version de java livre avec le launcher';
+            path.value = 'Użyj wersji javy dostarczonej z launcherem';
             file.value = '';
             this.database.update({ uuid: "1234", path: false }, 'java-path');
         });
