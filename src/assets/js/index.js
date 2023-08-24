@@ -3,12 +3,11 @@
  * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
  */
 
-'use strict';
-const { ipcRenderer } = require('electron');
-import { config } from './utils.js';
+"use strict";
+const { ipcRenderer } = require("electron");
+import { config } from "./utils.js";
 
-let dev = process.env.NODE_ENV === 'dev';
-
+let dev = process.env.NODE_ENV === "dev";
 
 class Splash {
     constructor() {
@@ -17,21 +16,69 @@ class Splash {
         this.splashAuthor = document.querySelector(".splash-author");
         this.message = document.querySelector(".message");
         this.progress = document.querySelector("progress");
-        document.addEventListener('DOMContentLoaded', () => this.startAnimation());
+        document.addEventListener("DOMContentLoaded", () =>
+            this.startAnimation()
+        );
     }
 
     async startAnimation() {
         let splashes = [
-            { "message": "Allexa - Bogini Wojen i Śmierci", "author": "Arrchez" },
-            { "message": "Allexa to Bogini", "author": "Wisnia" },
-            { "message": "Znowu wymysły zachodniej burżuazji", "author": "Rof" },
-            { "message": "Linux jest super, tak długo jak działa", "author": "Felix" },
-            { "message": "Kamienne kilofy podnoszą inflację", "author": "Rosomak" },
-            { "message": "Ja osobiście poprowadzę atak na Tokio", "author": "Okomana"},
-
-
-
-        ]
+            { message: "Allexa - Bogini Wojen i Śmierci", author: "Arrchez" },
+            { message: "Allexa to Bogini", author: "Wisnia" },
+            { message: "Znowu wymysły zachodniej burżuazji", author: "Rof" },
+            {
+                message: "Linux jest super, tak długo jak działa",
+                author: "Felix",
+            },
+            { message: "Kamienne kilofy podnoszą inflację", author: "Rosomak" },
+            { message: "Będzie Pan zlizywał śmietankę", author: "Rosomak" },
+            {
+                message: "Ja osobiście poprowadzę atak na Tokio",
+                author: "Okomana",
+            },
+            { message: "Spierdalaj", author: "Harvey" },
+            {
+                message: "Na szanowanie immunitetu trzeba sobie zasłużyć",
+                author: "Rof2000",
+            },
+            {
+                message: "Słyszałem, że skończył się wiśniowy reżim",
+                author: "Llamonardo",
+            },
+            { message: "Co Felix robisz na walentynki?", author: "Arrchez" },
+            {
+                message:
+                    "GMC: Kupcie villagerów za 100zł AreaRP: Spalmy gracza",
+                author: "Nieznany",
+            },
+            {
+                message: "Współprace z serwerami LGBT dają pierwsze plony",
+                author: "Harvey",
+            },
+            {
+                message: "Piękne czasy jak po AreaRP4 [Harvey] dostał bana",
+                author: "Wiśnia",
+            },
+            {
+                message: "Nie wiem skąd ONZ by miało mieć silk touch i mending",
+                author: "Wiśnia",
+            },
+            {
+                message:
+                    "Głównym obowiązkiem ONZ jest strzec pokoju na serwerze [...]",
+                author: "Wiśnia",
+            },
+            { message: "Dziękuję towarzyszu wisienko", author: "Tyberiusz" },
+            {
+                message: "Zigowski chleb z węglem uratował  ludność w ZSRR",
+                author: "Bartin",
+            },
+            { message: "Czy to jest w ogóle legalne", author: "Akira" },
+            {
+                message: "Chcesz odzewu masz mój by ci nie było przykro",
+                author: "Szczypikrul",
+            },
+        ];
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;
         this.splashAuthor.children[0].textContent = "@" + splash.author;
@@ -52,42 +99,48 @@ class Splash {
         if (dev) return this.startLauncher();
         this.setStatus(`Wyszukiwanie aktualizacji...`);
 
-        ipcRenderer.invoke('update-app').then(err => {
+        ipcRenderer.invoke("update-app").then((err) => {
             if (err.error) {
                 let error = err.message;
                 this.shutdown(`Błąd wyszukiwania aktualizacji: <br>${error}`);
             }
-        })
+        });
 
-        ipcRenderer.on('updateAvailable', () => {
+        ipcRenderer.on("updateAvailable", () => {
             this.setStatus(`Aktualizacja dostępna!`);
             this.toggleProgress();
-            ipcRenderer.send('start-update');
-        })
+            ipcRenderer.send("start-update");
+        });
 
-        ipcRenderer.on('download-progress', (event, progress) => {
+        ipcRenderer.on("download-progress", (event, progress) => {
             this.setProgress(progress.transferred, progress.total);
-        })
+        });
 
-        ipcRenderer.on('update-not-available', () => {
+        ipcRenderer.on("update-not-available", () => {
             this.maintenanceCheck();
-        })
+        });
     }
 
     async maintenanceCheck() {
-        config.GetConfig().then(res => {
-            if (res.maintenance) return this.shutdown(res.maintenance_message);
-            this.startLauncher();
-        }).catch(e => {
-            console.error(e);
-            return this.shutdown("Nie wykryto połączenia internetowego,<br>proszę spróbować ponownie później.");
-        })
+        config
+            .GetConfig()
+            .then((res) => {
+                if (res.maintenance)
+                    return this.shutdown(res.maintenance_message);
+                this.startLauncher();
+            })
+            .catch((e) => {
+                console.error(e);
+                return this.shutdown(
+                    "Nie wykryto połączenia internetowego,<br>proszę spróbować ponownie później."
+                );
+            });
     }
 
     startLauncher() {
         this.setStatus(`Uruchamianie launchera`);
-        ipcRenderer.send('main-window-open');
-        ipcRenderer.send('update-window-close');
+        ipcRenderer.send("main-window-open");
+        ipcRenderer.send("update-window-close");
     }
 
     shutdown(text) {
@@ -95,7 +148,7 @@ class Splash {
         let i = 4;
         setInterval(() => {
             this.setStatus(`${text}<br>Zamknięcie za ${i--}s`);
-            if (i < 0) ipcRenderer.send('update-window-close');
+            if (i < 0) ipcRenderer.send("update-window-close");
         }, 1000);
     }
 
@@ -114,12 +167,12 @@ class Splash {
 }
 
 function sleep(ms) {
-    return new Promise(r => setTimeout(r, ms));
+    return new Promise((r) => setTimeout(r, ms));
 }
 
 document.addEventListener("keydown", (e) => {
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 73 || e.keyCode == 123) {
+    if ((e.ctrlKey && e.shiftKey && e.keyCode == 73) || e.keyCode == 123) {
         ipcRenderer.send("update-window-dev-tools");
     }
-})
+});
 new Splash();
