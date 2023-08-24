@@ -4,7 +4,7 @@
     "description": "Launcher for AreaRP",
     "main": "src/app.js",
     "author": "Felix-1871",
-    "url": "localhost",
+    "url": "http://localhost",
     "engines": {
         "node": "^18.x.x"
     },
