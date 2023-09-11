@@ -46,7 +46,8 @@ class Home {
                 news.appendChild(blockNews);
             } else {
                 for (let News of this.news) {
-                    let date = await this.getdate(News.publish_date)
+                    let dateM = News.publish_month
+                    let dateD = News.publish_day
                     let blockNews = document.createElement('div');
                     blockNews.classList.add('news-block');
                     blockNews.innerHTML = `
@@ -55,14 +56,14 @@ class Home {
                                 <div class="title">${News.title}</div>
                             </div>
                             <div class="date">
-                                <div class="day">${date.day}</div>
-                                <div class="month">${date.month}</div>
+                                <div class="day">${dateD}</div>
+                                <div class="month">${dateM}</div>
                             </div>
                         </div>
                         <div class="news-content">
                             <div class="bbWrapper">
                                 <p>${News.content.replace(/\n/g, '</br>')}</p>
-                                <p class="news-author">Auteur,<span> ${News.author}</span></p>
+                                <p class="news-author">Autorstwa <span> ${News.author}</span></p>
                             </div>
                         </div>`
                     news.appendChild(blockNews);

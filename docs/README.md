@@ -9,11 +9,11 @@
 [<p align="center">]()
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q7OKE1R)
 
-<!-- TODO Get link <p align="center">
-    <a href="http://discord.gg/">
+<p align="center">
+    <a href="https://discord.gg/U7Gw2RfqEw">
         <img src="https://invidget.switchblade.xyz/e9q7Yr2cuQ">
     </a>
-</p> -->
+</p> 
 
 ---
 
