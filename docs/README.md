@@ -11,9 +11,9 @@
 
 <p align="center">
     <a href="https://discord.gg/U7Gw2RfqEw">
-        <img src="https://invidget.switchblade.xyz/e9q7Yr2cuQ">
+        <img src="https://invidget.switchblade.xyz/U7Gw2RfqEw">
     </a>
-</p> 
+</p>
 
 ---
 
