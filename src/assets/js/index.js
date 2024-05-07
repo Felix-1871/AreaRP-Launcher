@@ -1,13 +1,14 @@
 /**
  * @author Luuxis
- * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
+ * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0
  */
 
-"use strict";
-const { ipcRenderer } = require("electron");
-import { config } from "./utils.js";
+const { ipcRenderer, shell } = require('electron');
+const pkg = require('../package.json');
+const os = require('os');
+import { config, database } from './utils.js';
+const nodeFetch = require("node-fetch");
 
-let dev = process.env.NODE_ENV === "dev";
 
 class Splash {
     constructor() {
@@ -15,10 +16,16 @@ class Splash {
         this.splashMessage = document.querySelector(".splash-message");
         this.splashAuthor = document.querySelector(".splash-author");
         this.message = document.querySelector(".message");
-        this.progress = document.querySelector("progress");
-        document.addEventListener("DOMContentLoaded", () =>
+        this.progress = document.querySelector(".progress");
+        document.addEventListener('DOMContentLoaded', async () => {
+            let databaseLauncher = new database();
+            let configClient = await databaseLauncher.readData('configClient');
+            let theme = configClient?.launcher_config?.theme || "auto"
+            let isDarkTheme = await ipcRenderer.invoke('is-dark-theme', theme).then(res => res)
+            document.body.className = isDarkTheme ? 'dark global' : 'light global';
+            if (process.platform == 'win32') ipcRenderer.send('update-window-progress-load')
             this.startAnimation()
-        );
+        });
     }
 
     async startAnimation() {
@@ -96,30 +103,67 @@ class Splash {
     }
 
     async checkUpdate() {
-        if (dev) return this.startLauncher();
         this.setStatus(`Wyszukiwanie aktualizacji...`);
 
-        ipcRenderer.invoke("update-app").then((err) => {
-            if (err.error) {
-                let error = err.message;
-                this.shutdown(`Błąd wyszukiwania aktualizacji: <br>${error}`);
+        ipcRenderer.invoke("update-app").then().catch((err) => {
+            return this.shutdown(`Błąd wyszukiwania aktualizacji: <br>${err.message}`);
+        });;
+
+        ipcRenderer.on('updateAvailable', () => {
+            this.setStatus(`Mise à jour disponible !`);
+            if (os.platform() == 'win32') {
+                this.toggleProgress();
+                ipcRenderer.send('start-update');
             }
-        });
+            else return this.dowloadUpdate();
+        })
 
-        ipcRenderer.on("updateAvailable", () => {
-            this.setStatus(`Aktualizacja dostępna!`);
-            this.toggleProgress();
-            ipcRenderer.send("start-update");
-        });
+        ipcRenderer.on('error', (event, err) => {
+            if (err) return this.shutdown(`${err.message}`);
+        })
 
-        ipcRenderer.on("download-progress", (event, progress) => {
+        ipcRenderer.on('download-progress', (event, progress) => {
+            ipcRenderer.send('update-window-progress', { progress: progress.transferred, size: progress.total })
             this.setProgress(progress.transferred, progress.total);
         });
 
-        ipcRenderer.on("update-not-available", () => {
+        ipcRenderer.on('update-not-available', () => {
+            console.error("Update nie jest dostępny");
             this.maintenanceCheck();
         });
     }
+
+    getLatestReleaseForOS(os, preferredFormat, asset) {
+        return asset.filter(asset => {
+            const name = asset.name.toLowerCase();
+            const isOSMatch = name.includes(os);
+            const isFormatMatch = name.endsWith(preferredFormat);
+            return isOSMatch && isFormatMatch;
+        }).sort((a, b) => new Date(b.created_at) - new Date(a.created_at))[0];
+    }
+
+    async dowloadUpdate() {
+        const repoURL = pkg.repository.url.replace("git+", "").replace(".git", "").replace("https://github.com/", "").split("/");
+        const githubAPI = await nodeFetch('https://api.github.com').then(res => res.json()).catch(err => err);
+
+        const githubAPIRepoURL = githubAPI.repository_url.replace("{owner}", repoURL[0]).replace("{repo}", repoURL[1]);
+        const githubAPIRepo = await nodeFetch(githubAPIRepoURL).then(res => res.json()).catch(err => err);
+
+        const releases_url = await nodeFetch(githubAPIRepo.releases_url.replace("{/id}", '')).then(res => res.json()).catch(err => err);
+        const latestRelease = releases_url[0].assets;
+        let latest;
+
+        if (os.platform() == 'darwin') latest = this.getLatestReleaseForOS('mac', '.dmg', latestRelease);
+        else if (os == 'linux') latest = this.getLatestReleaseForOS('linux', '.appimage', latestRelease);
+
+
+        this.setStatus(`Mise à jour disponible !<br><div class="download-update">Télécharger</div>`);
+        document.querySelector(".download-update").addEventListener("click", () => {
+            shell.openExternal(latest.browser_download_url);
+            return this.shutdown("Téléchargement en cours...");
+        });
+    }
+
 
     async maintenanceCheck() {
         config

@@ -6,3 +6,5 @@ dist
 node-v*
 AppData
 web
+data
+.DS_Store
